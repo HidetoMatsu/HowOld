@@ -1,8 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyman="http://schemas.android.com/apk/res/com.example.facedetection"
+     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <com.example.facedetection.view.satelliteMenu
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentTop="true"
+      hyman:position="left_bottom"
+      hyman:radius="150dp" >
+
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/composer_button" >
+
+          <ImageView
+              android:id="@+id/id_button"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:src="@drawable/composer_icn_plus" />
+      </RelativeLayout>
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/composer_camera"
+          android:tag="camera" />
+
+      <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/composer_music"
+          android:minHeight="40dip"
+          android:minWidth="40dip"
+          android:tag="music" />
+
+      <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/composer_place"
+          android:minHeight="40dip"
+          android:minWidth="40dip"
+          android:tag="place" />
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/composer_sleep"
+          android:tag="sleep" />
+  </com.example.facedetection.view.satelliteMenu>
+    
     <Button
         android:id="@+id/id_getImage"
         android:layout_width="wrap_content"
@@ -31,6 +83,8 @@
         android:layout_toLeftOf="@id/id_detect"
         android:text="1000000" />
 
+    
+    
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
@@ -39,7 +93,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="160dp"
         android:src="@drawable/t4" />
-
 
     <FrameLayout
         android:layout_width="match_parent"
