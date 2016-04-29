@@ -33,27 +33,34 @@
           android:tag="camera" />
 
       <Button
+          android:id="@+id/btn1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="@drawable/composer_music"
+          android:background="@drawable/detect"
           android:minHeight="40dip"
           android:minWidth="40dip"
           android:tag="music" />
 
       <Button
+          android:id="@+id/btn2"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="@drawable/composer_place"
+          android:background="@drawable/camera"
           android:minHeight="40dip"
           android:minWidth="40dip"
           android:tag="place" />
 
-      <ImageView
+      <Button
+          android:id="@+id/btn3"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:src="@drawable/composer_sleep"
+          android:background="@drawable/Close"
           android:tag="sleep" />
+      
+      
+      
   </com.example.facedetection.view.satelliteMenu>
+ 
     
     <Button
         android:id="@+id/id_getImage"
@@ -64,15 +71,6 @@
         android:layout_marginRight="10dp"
         android:text="Get Image" />
 
-    <Button
-        android:id="@+id/id_detect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@id/id_getImage"        
-        android:text="Detect" />
-
     <TextView
         android:id="@+id/id_tip"
         android:layout_width="wrap_content"
@@ -81,7 +79,7 @@
         android:layout_marginRight="10dp"
         android:layout_alignTop="@id/id_detect"
         android:layout_toLeftOf="@id/id_detect"
-        android:text="1000000" />
+         />
 
     
     
