@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.example.facedetection.view.satelliteMenu
+   <com.example.facedetection.view.ArcMenu
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_alignParentLeft="true"
@@ -27,16 +27,19 @@
       </RelativeLayout>
 
       <ImageView
+          
+          
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:src="@drawable/composer_camera"
           android:tag="camera" />
 
       <Button
+          
           android:id="@+id/btn1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="@drawable/detect"
+          android:background="@drawable/close"
           android:minHeight="40dip"
           android:minWidth="40dip"
           android:tag="music" />
@@ -45,7 +48,7 @@
           android:id="@+id/btn2"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="@drawable/camera"
+          android:background="@drawable/gallery"
           android:minHeight="40dip"
           android:minWidth="40dip"
           android:tag="place" />
@@ -54,13 +57,9 @@
           android:id="@+id/btn3"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="@drawable/Close"
+          android:background="@drawable/play"
           android:tag="sleep" />
-      
-      
-      
-  </com.example.facedetection.view.satelliteMenu>
- 
+  </com.example.facedetection.view.ArcMenu>
     
     <Button
         android:id="@+id/id_getImage"
