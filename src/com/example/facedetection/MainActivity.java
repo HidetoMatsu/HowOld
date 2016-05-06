@@ -16,6 +16,39 @@ import android.widget.Button;
 import android.os.Build;
 
 public class MainActivity extends Activity {
+	
+	
+	private Handler mHandler = new Handler(){
+		@Override
+		public void handleMessage(Message msg)
+		{
+			switch(msg.what){
+			case MSG_SUCC:
+				mWaiting.setVisibility(View.GONE);
+				JSONObject rs = (JSONObject)msg.obj;
+				prepareBitmap(rs);
+				mPhoto.setImageBitmap(mpi);
+				break;
+			case MSG_ERROR:
+				mWaiting.setVisibility(View.GONE);
+				String errorMsg =(String) msg.obj;
+				if(TextUtils.isEmpty(errorMsg))
+				{
+					mTip.setText("error");
+				}
+				else{
+					mTip.setText(errorMsg);
+				}
+				
+				break;
+			
+			}
+			super.handleMessage(msg);
+		}
+	
+	
+	
+	};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
