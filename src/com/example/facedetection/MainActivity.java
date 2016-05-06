@@ -38,7 +38,13 @@ public class MainActivity extends Activity {
 			}
 		});
         
-       
+         AppConnect.getInstance("cdbb4bf16bbd4862672fd2008fcec98c","google",this);
+        
+        
+        LinearLayout adlayout =(LinearLayout)findViewById(R.id.AdLinearLayout);
+        AppConnect.getInstance(this).showBannerAd(this, adlayout);
+        
+        AppConnect.getInstance(this).showPopAd(this);
       
     }
 
