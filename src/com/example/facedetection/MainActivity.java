@@ -48,6 +48,26 @@ public class MainActivity extends Activity {
       
     }
     
+     private Bitmap buildAgeBitmap(int age, boolean isMale) {
+			// TODO Auto-generated method stub
+	    	TextView tv = (TextView) mWaiting.findViewById(R.id.id_age_gen);
+	    	tv.setText(age+"");
+	    	
+	    	if(isMale){
+	    		tv.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.male), null, null, null);
+	    	}
+	    	else{
+	    		tv.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.female),null, null, null);
+	    	}
+	    	tv.setDrawingCacheEnabled(true);
+	    	Bitmap bitmap = Bitmap.createBitmap(tv.getDrawingCache());
+	    	tv.destroyDrawingCache();
+			return bitmap;
+		}
+    
+    
+    
+    
     
     	private void prepareBitmap(JSONObject rs){
 		
