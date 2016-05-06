@@ -45,6 +45,34 @@ public class MainActivity extends Activity {
         AppConnect.getInstance(this).showBannerAd(this, adlayout);
         
         AppConnect.getInstance(this).showPopAd(this);
+        
+        
+        
+         protected void onActivityResult(int requestCode,int resultCode, Intent intent){
+    	if(requestCode==PICK_CODE){
+    		Uri uri = intent.getData();
+    		Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+    		cursor.moveToFirst();
+    		int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+    		mCurrentPhotoStr = cursor.getString(idx);
+    		cursor.close();
+    		
+    		
+    		BitmapFactory.Options options = new BitmapFactory.Options();
+    		options.inJustDecodeBounds= true;
+    		BitmapFactory.decodeFile(mCurrentPhotoStr,options);
+    		
+    		double ratio = Math.max(options.outWidth*1.0d/1024f, options.outHeight*1.0d/1024f);
+    		options.inSampleSize=(int) Math.ceil(ratio);
+    		options.inJustDecodeBounds=false ;
+    		mpi=BitmapFactory.decodeFile(mCurrentPhotoStr, options);
+    		mPhoto.setImageBitmap(mpi);
+    		mTip.setText("Click Detect");
+    		
+    		
+    	}
+    	super.onActivityResult(requestCode, resultCode, intent);
+    }
       
     }
 
