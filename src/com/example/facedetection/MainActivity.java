@@ -49,6 +49,91 @@ public class MainActivity extends Activity {
 	
 	
 	};
+	
+	
+	
+	private void prepareBitmap(JSONObject rs){
+		
+		Bitmap bitmap = Bitmap.createBitmap(mpi.getWidth(),mpi.getHeight(),mpi.getConfig());
+		Canvas canv = new Canvas(bitmap); 
+		canv.drawBitmap(mpi, 0, 0,null);
+	
+		try{
+		JSONArray faces =rs.getJSONArray("face");
+		int faceCount = faces.length();
+		mTip.setTag("find "+faceCount);
+		
+		for(int i=0; i<faceCount;i++)
+		{
+			JSONObject face = faces.getJSONObject(i);
+			JSONObject posiobj = face.getJSONObject("position");
+			float x = (float) posiobj.getJSONObject("center").getDouble("x");
+			float y = (float) posiobj.getJSONObject("center").getDouble("y");
+			
+			float w = (float) posiobj.getDouble("width");
+		    float h = (float) posiobj.getDouble("height");
+			
+			
+			x=x/100*bitmap.getWidth();
+			y=y/100*bitmap.getHeight();
+			w=w/100*bitmap.getWidth();
+			h=h/100*bitmap.getHeight();
+			
+			mPaint.setColor(0xffffffff);
+			mPaint.setStrokeWidth(3);
+			canv.drawLine(x-w/2,y-h/2, x-w/2,y+h/2,mPaint);
+			canv.drawLine(x-w/2,y-h/2, x+w/2,y-h/2,mPaint);
+			canv.drawLine(x+w/2,y-h/2, x+w/2,y+h/2,mPaint);
+			canv.drawLine(x-w/2,y+h/2, x+w/2,y+h/2,mPaint);
+			
+			int age = face.getJSONObject("attribute").getJSONObject("age").getInt("value");
+			String gender = face.getJSONObject("attribute").getJSONObject("gender").getString("value");
+			
+            Bitmap ageBitmap = buildAgeBitmap(age, "Male".equals(gender));
+			
+			
+			int ageWidth = ageBitmap.getWidth();
+			int ageHeight = ageBitmap.getHeight();
+			
+			if(bitmap.getWidth()<mPhoto.getWidth()&&bitmap.getHeight()<mPhoto.getHeight())
+			{
+				float ratio = Math.max(bitmap.getWidth()*1.0f/mPhoto.getWidth(),bitmap.getHeight()*1.0f/mPhoto.getHeight());
+				ageBitmap = Bitmap.createScaledBitmap(ageBitmap, (int)(ageWidth*ratio), (int)(ageHeight*ratio), false);
+			}
+			canv.drawBitmap(ageBitmap, x-ageBitmap.getWidth()/2,y-h/2-ageBitmap.getHeight(), null);
+			mTip.setText("age:"+age+"gender:"+gender);
+			mpi = bitmap;
+			
+		}
+		}
+		catch(JSONException e){
+			e.printStackTrace();
+		}
+	
+		
+	}
+		
+		
+		
+
+	  private Bitmap buildAgeBitmap(int age, boolean isMale) {
+			// TODO Auto-generated method stub
+	    	TextView tv = (TextView) mWaiting.findViewById(R.id.id_age_gen);
+	    	tv.setText(age+"");
+	    	
+	    	if(isMale){
+	    		tv.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.male), null, null, null);
+	    	}
+	    	else{
+	    		tv.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.female),null, null, null);
+	    	}
+	    	tv.setDrawingCacheEnabled(true);
+	    	Bitmap bitmap = Bitmap.createBitmap(tv.getDrawingCache());
+	    	tv.destroyDrawingCache();
+			return bitmap;
+		}
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
