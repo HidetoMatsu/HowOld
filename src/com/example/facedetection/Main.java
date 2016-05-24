@@ -1,5 +1,7 @@
 package com.example.facedetection;
 
+big valia
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,12 +23,12 @@ public class Main extends Activity {
 		
 		setContentView(R.layout.welcome);
 		
-		   final Intent it = new Intent(this, MainActivity.class); //下一步转向Mainctivity
+		   final Intent it = new Intent(this, MainActivity.class); //脧脗脪禄虏陆脳陋脧貌Mainctivity
 	        Timer timer = new Timer();
 	        TimerTask task = new TimerTask() {
 	            @Override
 	            public void run() {
-	                startActivity(it); //执行意图
+	                startActivity(it); //脰麓脨脨脪芒脥录
 	            }
 	        };
 	        timer.schedule(task, 1000 * 3);
